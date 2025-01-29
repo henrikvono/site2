@@ -92,8 +92,34 @@ h1 {
   justify-content: center; /* Text horizontal zentrieren */
 }
 
-.season:hover {
-  background-color: #a7a7a7; /* Leicht dunklere Farbe beim Hover */
+.season {
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 200;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* Text vertikal zentrieren */
+  justify-content: center; /* Text horizontal zentrieren */
+}
+
+.season1:hover {
+  background-color: #f9c2a5; /* Leicht dunklere Farbe beim Hover */
+}
+
+.season2:hover {
+  background-color: #bccdb1; /* Leicht dunklere Farbe beim Hover */
+}
+
+.season3:hover {
+  background-color: #ffe2b3; /* Leicht dunklere Farbe beim Hover */
+}
+
+.season4:hover {
+  background-color: #9caad5; /* Leicht dunklere Farbe beim Hover */
 }
 
 .footer {
@@ -139,6 +165,18 @@ h1 {
     top: 50px;
     right: 20px;
   }
+
+  .product_grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the cards horizontally */
+  }
+
+  .card {
+    width: 90%; /* Prevent full width */
+    max-width: 350px; /* Limit max width */
+    margin: auto; /* Ensures it's centered */
+  }
 }
 
 .hamburger {
@@ -158,4 +196,79 @@ h1 {
   margin: 5px auto;
   background-color: #000000;
   transition: all 0.3s ease-in-out;
+}
+
+/* Produkt grid */
+
+.product_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive Grid */
+  grid-template-rows: auto auto auto;
+  gap: 25px;
+  align-items: start;
+  padding-bottom: 50px;
+}
+
+.discount-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 5px 15px;
+}
+
+.soldout-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: 100;
+  padding: 10px 15px;
+}
+
+/* Card Container */
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 400px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Image Styling */
+.card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* Subgrid for Text */
+.card_container {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.card h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
 }
