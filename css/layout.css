@@ -1,8 +1,161 @@
-.navbar {
+a {
   text-decoration: none;
   color: black;
 }
 
-h2 {
-  color: blue;
+body {
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.logo img {
+  height: 100px;
+  flex-grow: 1;
+  object-fit: contain;
+}
+
+.navbar a {
+  font-family: "quador", serif;
+  font-weight: 200;
+  color: #3e3e3f;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.menu_links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Unterstreichung nur für Menü-Links, nicht für das Logo */
+.navbar a:not(.logo a)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: #3e3e3f;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Strich erscheint beim Hover */
+.navbar a:not(.logo a):hover::after {
+  width: 100%;
+}
+
+main {
+  font-family: "antipoda-variable", sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.seasons_container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 100vw; /* Volle Breite des Viewports */
+  height: 100vh; /* Volle Höhe des Viewports */
+  display: flex; /* Flexbox für zentrierte Inhalte */
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 Spalten */
+  grid-template-rows: repeat(2, 1fr); /* 2 Zeilen */
+  gap: 10px; /* Abstand zwischen den Boxen */
+  width: 100%;
+  height: 100%; /* Nimmt die gesamte Höhe der .seasons_container ein */
+}
+
+.season {
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 200;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* Text vertikal zentrieren */
+  justify-content: center; /* Text horizontal zentrieren */
+}
+
+.season:hover {
+  background-color: #a7a7a7; /* Leicht dunklere Farbe beim Hover */
+}
+
+.footer {
+  font-family: "quador", serif;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  border-top: 1px solid #000000; /* Dünne Linie oben */
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr; /* Eine einzige Spalte */
+    grid-template-rows: auto; /* Automatische Höhe für jedes Element */
+  }
+
+  .menu_links {
+    display: none; /* Hide the menu by default */
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 150px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .menu_links.show {
+    display: flex; /* Show menu when toggled */
+  }
+
+  .menu_links.show a {
+    padding: 5px;
+  }
+
+  .hamburger {
+    display: flex !important; /* Ensure the hamburger is visible */
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute; /* Position it in the top right */
+    top: 50px;
+    right: 20px;
+  }
+}
+
+.hamburger {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute; /* Position it so it's always in the top right */
+  top: 42px;
+  right: 35px;
+  z-index: 1000; /* Ensure it's above everything */
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: #000000;
+  transition: all 0.3s ease-in-out;
 }
