@@ -1,0 +1,423 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0 20px;
+  max-width: 1800px; /* Prevents overflow */
+  margin: auto;
+}
+
+.logo img {
+  height: 100px;
+  flex-grow: 1;
+  object-fit: contain;
+  margin-left: -14px;
+}
+
+.navbar a {
+  font-family: "quador", serif;
+  font-weight: 200;
+  color: #3e3e3f;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  max-width: 1800px;
+  margin: auto;
+}
+
+.menu_links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Unterstreichung nur für Menü-Links, nicht für das Logo */
+.navbar a:not(.logo a)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: #3e3e3f;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Strich erscheint beim Hover */
+.navbar a:not(.logo a):hover::after {
+  width: 100%;
+}
+
+main {
+  font-family: "antipoda-variable", sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.seasons_container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 100vw; /* Volle Breite des Viewports */
+  height: 100vh; /* Volle Höhe des Viewports */
+  display: flex; /* Flexbox für zentrierte Inhalte */
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 Spalten */
+  grid-template-rows: repeat(2, 1fr); /* 2 Zeilen */
+  gap: 10px; /* Abstand zwischen den Boxen */
+  width: 100%;
+  height: 100%; /* Nimmt die gesamte Höhe der .seasons_container ein */
+}
+
+.season {
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 200;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* Text vertikal zentrieren */
+  justify-content: center; /* Text horizontal zentrieren */
+}
+
+.season {
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 200;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* Text vertikal zentrieren */
+  justify-content: center; /* Text horizontal zentrieren */
+}
+
+.season1:hover {
+  background-color: #f9c2a5; /* Leicht dunklere Farbe beim Hover */
+}
+
+.season2:hover {
+  background-color: #bccdb1; /* Leicht dunklere Farbe beim Hover */
+}
+
+.season3:hover {
+  background-color: #ffe2b3; /* Leicht dunklere Farbe beim Hover */
+}
+
+.season4:hover {
+  background-color: #9caad5; /* Leicht dunklere Farbe beim Hover */
+}
+
+.footer {
+  font-family: "quador", serif;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  border-top: 1px solid #000000; /* Dünne Linie oben */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .item_container {
+    display: grid;
+    grid-template-columns: 1fr !important; /* 💡 Force a single column */
+    gap: 20px; /* Keep spacing */
+    max-width: 100vw; /* Ensure it stays within screen */
+  }
+
+  body {
+    max-width: 100vw; /* Prevents overflow */
+  }
+
+  .item {
+    width: 100%; /* Ensure images take full width */
+    max-width: 100%; /* Prevent unwanted scaling */
+  }
+  .item_description {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .size-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cart {
+    max-width: 100vw !important;
+  }
+}
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr; /* Eine einzige Spalte */
+    grid-template-rows: auto; /* Automatische Höhe für jedes Element */
+  }
+
+  .menu_links {
+    display: none; /* Hide the menu by default */
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 150px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .menu_links.show {
+    display: flex; /* Show menu when toggled */
+  }
+
+  .menu_links.show a {
+    padding: 5px;
+  }
+
+  .hamburger {
+    display: flex !important; /* Ensure the hamburger is visible */
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute; /* Position it in the top right */
+    top: 50px;
+    right: 20px;
+  }
+
+  .product_grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the cards horizontally */
+  }
+
+  .card {
+    width: 90%; /* Prevent full width */
+    max-width: 350px; /* Limit max width */
+    margin: auto; /* Ensures it's centered */
+  }
+}
+
+.hamburger {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute; /* Position it so it's always in the top right */
+  top: 42px;
+  right: 35px;
+  z-index: 1000; /* Ensure it's above everything */
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: #000000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Produkt grid */
+
+.product_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive Grid */
+  grid-template-rows: auto auto auto;
+  gap: 25px;
+  align-items: start;
+  padding-bottom: 50px;
+}
+
+.discount-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 5px 15px;
+}
+
+.soldout-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: 100;
+  padding: 10px 15px;
+}
+
+/* Card Container */
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+  padding: 15px;
+
+  max-width: 400px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Image Styling */
+.card img {
+  width: 100%;
+}
+
+/* Subgrid for Text */
+.card_container {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.card h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+h5 {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.item_container {
+  padding-top: 50px;
+  max-width: 1800px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  margin: auto;
+}
+
+.product_information_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 400px;
+}
+
+h4 {
+  font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 30px;
+}
+
+.description_text {
+  font-weight: 200;
+  margin-top: 10px;
+}
+
+p.description_item {
+  margin-top: 40px;
+  font-size: 15px;
+  margin-bottom: 70px;
+  font-weight: 100;
+  line-height: 1.3;
+  color: #3e3e3f;
+}
+
+.outline {
+  width: 400px;
+}
+
+.cart {
+  font-size: 15px;
+  font-weight: 300;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 70px;
+  max-width: 50vw; /* Volle Breite des Viewports */
+  border: 1px solid black;
+  text-align: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.cart:hover {
+  background-color: #3e3e3f;
+  color: white;
+}
+
+div.item {
+  align-items: center;
+  margin: auto;
+}
+
+.size-options {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.size {
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 40px;
+}
+
+.size:hover {
+  background-color: #3e3e3f;
+  color: white;
+}
+
+.item_description {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.item img {
+  max-width: 100%; /* Ensures the image never exceeds the parent */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Avoid extra space below images */
+}

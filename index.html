@@ -3,13 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="https://use.typekit.net/zcs7zbw.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/zcs7zbw.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="icon" href="img/fashionruslogo.png" type="image/x-icon" />
     <title>FashionRUs</title>
   </head>
   <body>
-    <header></header>
+    <header>
+      <nav>
+        <div class="navbar">
+          <div class="logo">
+            <a href="index.html">
+              <img src="img/fashionruslogo.png" alt="logo" />
+            </a>
+          </div>
+
+          <div class="menu_links">
+            <a href="#">Categories</a>
+            <a href="#">Brands</a>
+            <a href="#">Seasons</a>
+          </div>
+          <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </nav>
+    </header>
     <main>
-      <h1>Hej</h1>
+      <section class="seasons_container">
+        <h1>Seasons</h1>
+        <div class="grid">
+          <a href="produktliste.html?season=Fall" target="_blank" class="season season1">Fall</a>
+          <a href="produktliste.html?season=Spring" target="_blank" class="season season2">Spring</a>
+          <a href="produktliste.html?season=Summer" target="_blank" class="season season3">Summer</a>
+          <a href="produktliste.html?season=Winter" target="_blank" class="season season4">Winter</a>
+        </div>
+      </section>
     </main>
-    <footer></footer>
+    <footer class="footer">
+      <p>&copy; 2025 - FashionRUs</p>
+    </footer>
+    <script>
+      document.getElementById("hamburger").addEventListener("click", function () {
+        document.querySelector(".menu_links").classList.toggle("show");
+      });
+    </script>
   </body>
 </html>
