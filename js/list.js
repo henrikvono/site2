@@ -1,22 +1,35 @@
-const productGrid = document.querySelector(".product_grid");
+const urlParams = new URLSearchParams(window.location.search);
+const season = urlParams.get("season");
 
-fetch("https://kea-alt-del.dk/t7/api/products")
-  .then((response) => response.json())
-  .then((products) => {
-    productGrid.innerHTML = products
-      .map((product) => {
-        return `
-       <section class="card">
-          <a href="produkt.html">
-            <img src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp" alt="Produktbillede" style="width: 100%" />
-            <article class="card_container">
-              <h2>${product.productdisplayname}</h2>
-              <p class="price">${product.price} DKK</p>
-            </article>
-          </a>
-        </section>
-        `;
-      })
-      .join(""); // Converts array into a string to insert into HTML
-  })
-  .catch((error) => console.error("Error fetching products:", error));
+if (season) {
+  document.getElementById("category-title").textContent = season;
+  fetchProducts(season);
+}
+
+async function fetchProducts(season) {
+  const url = `https://kea-alt-del.dk/t7/api/products?season=${season}`;
+  const response = await fetch(url);
+  const products = await response.json();
+
+  displayProducts(products);
+}
+
+function displayProducts(products) {
+  const container = document.querySelector(".product_grid");
+  container.innerHTML = ""; // Clear previous content
+
+  products.forEach((product) => {
+    const productHTML = `
+      <section class="card">
+        <a href="produkt.html?id=${product.id}">
+          <img src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp" alt="${product.productdisplayname}" />
+          <article class="card_container">
+            <h2>${product.productdisplayname}</h2>
+            <p class="price">${product.price} DKK</p>
+          </article>
+        </a>
+      </section>
+    `;
+    container.innerHTML += productHTML;
+  });
+}
