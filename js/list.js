@@ -16,18 +16,24 @@ async function fetchProducts(season) {
 
 function displayProducts(products) {
   const container = document.querySelector(".product_grid");
-  container.innerHTML = ""; // Clear previous content
+  container.innerHTML = ""; // Ryd tidligere indhold
 
   products.forEach((product) => {
+    const discountLabel = product.discount ? `<div class="discount-label">Udsalg: ${product.discount}%</div>` : "";
+
+    const soldoutLabel = product.soldout ? `<div class="soldout-label">Udsolgt</div>` : "";
+
     const productHTML = `
       <section class="card">
-        <a href="produkt.html?id=${product.id}">
+      <a href="produkt.html?id=${product.id}">
+         ${discountLabel}
+         ${soldoutLabel}
           <img src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp" alt="${product.productdisplayname}" />
           <article class="card_container">
-            <h2>${product.productdisplayname}</h2>
-            <p class="price">${product.price} DKK</p>
+          <h2>${product.productdisplayname}</h2>
+          <p class="price">${product.price} DKK</p>
           </article>
-        </a>
+      </a>
       </section>
     `;
     container.innerHTML += productHTML;
